@@ -4,24 +4,24 @@
 
 Calculator::Calculator()
 {
-    __val1 = 0;
-    __val2 = 0;
+    _val1 = 0;
+    _val2 = 0;
     _result = 0;
 }
 
 void Calculator::add()
 {
-    _result = _val1 + _val2
+    _result = _val1 + _val2;
 }
 
 void Calculator::sub()
 {
-    _result = _val1 - _val2
+    _result = _val1 - _val2;
 }
 
 void Calculator::muti()
 {
-    _result = _val1 * _val2
+    _result = _val1 * _val2;
 }
 
 void Calculator::divi()
@@ -31,13 +31,14 @@ void Calculator::divi()
         std::cout <<"div2 can not to be 0,please input again" << std::endl;
         return;
     }
-    _result = _val1/_val2
+    _result = _val1 / _val2;
 }
 
-void Calculator::explain(const std::string& ope)
+void Calculator::explain(const std::string& line)
 {
     bool flag = 0;
-    for (char c : ope)
+    char ope;
+    for (char c : line)
     {
         if ( !(c > '0' && c < '9'))
         {
@@ -47,14 +48,7 @@ void Calculator::explain(const std::string& ope)
             }
             else
             {
-                    switch('ope')
-                    {
-                        case '+': add(); break;
-                        case '-': sub(); break;
-                        case 'x': muti(); break;
-                        case '%': divi(); break;
-                        default: break;
-                    }
+                ope = c;
             }
             flag = 1;
         } 
@@ -62,13 +56,21 @@ void Calculator::explain(const std::string& ope)
         {
             if(!flag)
             {
-                __val1 = __val1 * 10 + (c - '0');
+                _val1 = _val1 * 10 + (c - '0');
             }
             else
             {
-                __val2 = __val2 * 10 + (c - '0');
+                _val2 = _val2 * 10 + (c - '0');
             }
         }
+    }
+    switch (ope)
+    {
+        case '+': add(); break;
+        case '-': sub(); break;
+        case 'x': muti(); break;
+        case '%': divi(); break;
+        default: break;
     }
 }
 
