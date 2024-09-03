@@ -2,6 +2,7 @@
 
 #include "calculator.h"
 
+
 Calculator::Calculator()
 {
     _val1 = 0;
